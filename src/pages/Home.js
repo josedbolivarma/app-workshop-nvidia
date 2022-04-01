@@ -20,7 +20,10 @@ const useStyles = makeStyles((theme) => ({
         gap: "20px",
         width: "90%",
         margin: "0 auto",
-        paddingTop: theme.spacing(4)
+        paddingTop: theme.spacing(4),
+        [theme.breakpoints.down("xs")]: {
+            gridTemplateColumns: '1fr'
+        }
     }
 }));
 

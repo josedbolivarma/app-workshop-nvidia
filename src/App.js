@@ -1,6 +1,7 @@
 import Home from "./pages/Home";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
+import Product from "./pages/Product";
  
 function App() {
   const classes = useStyles();
@@ -9,6 +10,8 @@ function App() {
       <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/product/:id" element={<Product />} />
+
       </Routes>
       </BrowserRouter>
     </div>

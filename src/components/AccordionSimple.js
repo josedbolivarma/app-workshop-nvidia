@@ -16,15 +16,15 @@ const AccordionSimple = () => {
     <div className={classes.root}>
       <Accordion>
         <AccordionSummary
-          
+          className={classes.transparent}
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
           
-          <Typography className={classes.heading}>Accordion 1</Typography>
+          <Typography className={classes.heading}>Industry Segment</Typography>
          
         </AccordionSummary>
-        <AccordionDetails>
+        <AccordionDetails className={classes.transparent}>
           <Typography>
           <FormControlLabel
             aria-label="Acknowledge"
@@ -38,15 +38,85 @@ const AccordionSimple = () => {
       </Accordion>
       <Accordion>
         <AccordionSummary
-          
+          className={classes.transparent}
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
           
-          <Typography className={classes.heading}>Accordion 2</Typography>
+          <Typography className={classes.heading}>Primary Topic</Typography>
          
         </AccordionSummary>
-        <AccordionDetails>
+        <AccordionDetails
+        className={classes.transparent}>
+          <Typography>
+          <FormControlLabel
+            aria-label="Acknowledge"
+            onClick={(event) => event.stopPropagation()}
+            onFocus={(event) => event.stopPropagation()}
+            control={<Checkbox />}
+            label="I acknowledge that I should stop the click event propagation"
+          />
+          </Typography>
+        </AccordionDetails>
+      </Accordion>
+      <Accordion>
+        <AccordionSummary
+          className={classes.transparent}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        >
+          
+          <Typography className={classes.heading}>Other Collections</Typography>
+         
+        </AccordionSummary>
+        <AccordionDetails
+        className={classes.transparent}>
+          <Typography>
+          <FormControlLabel
+            aria-label="Acknowledge"
+            onClick={(event) => event.stopPropagation()}
+            onFocus={(event) => event.stopPropagation()}
+            control={<Checkbox />}
+            label="I acknowledge that I should stop the click event propagation"
+          />
+          </Typography>
+        </AccordionDetails>
+      </Accordion>
+      <Accordion>
+        <AccordionSummary
+          className={classes.transparent}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        >
+          
+          <Typography className={classes.heading}>Session Type</Typography>
+         
+        </AccordionSummary>
+        <AccordionDetails
+        className={classes.transparent}>
+          <Typography>
+          <FormControlLabel
+            aria-label="Acknowledge"
+            onClick={(event) => event.stopPropagation()}
+            onFocus={(event) => event.stopPropagation()}
+            control={<Checkbox />}
+            label="I acknowledge that I should stop the click event propagation"
+          />
+          </Typography>
+        </AccordionDetails>
+      </Accordion>
+      <Accordion>
+        <AccordionSummary
+          className={classes.transparent}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        >
+          
+          <Typography className={classes.heading}>Other colletions</Typography>
+         
+        </AccordionSummary>
+        <AccordionDetails
+        className={classes.transparent}>
           <Typography>
           <FormControlLabel
             aria-label="Acknowledge"
@@ -66,7 +136,6 @@ const AccordionSimple = () => {
 const useStyles = makeStyles((theme) => ({
   root: {
     color: "#fff",
-    
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
@@ -76,6 +145,11 @@ const useStyles = makeStyles((theme) => ({
       color: 'blue',
       cursor: 'pointer',
       textDecoration: 'underline',
+    },
+    transparent: {
+      backgroundColor: '#ddd',
+      border: 'none',
+      boxShadow: 'none'
     }
  
 }));

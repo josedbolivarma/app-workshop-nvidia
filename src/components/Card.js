@@ -7,36 +7,39 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import { Link } from 'react-router-dom';
 
 
 
-export default function MediaCard() {
+export default function MediaCard(el) {
   const classes = useStyles();
-
+   const data = el.data;
   return (
     <Card className={classes.root}>
       <CardActionArea>
         
         <CardContent className={classes.gap}>
-          <Typography gutterBottom variant="h5" component="h2">
-            Lizard
+        <Link className={classes.navLink} to={`/product/${data.id}`}>
+        <Typography gutterBottom variant="h5" component="h2" className={classes.title}>
+            {data.title}
           </Typography>
-          <Typography gutterBottom variant="h6" component="h2">
-            Watch Keynote
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-            across all continents except Antarctica
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            <b>Jensen Huang</b>: Founder and CEO, NVIDIA
+        </Link>
+          
+          <Typography gutterBottom variant="h6" component="h2" className={classes.title}>
+            {data.description}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            <b>Jensen Huang</b>: Founder and CEO, NVIDIA
+           {data.audience_level}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            <b>Jensen Huang</b>: Founder and CEO, NVIDIA
+            <b className={classes.mark}>Jensen Huang</b>: Founder and CEO, NVIDIA
           </Typography>
+          <Typography variant="body2" color="textSecondary" component="p">
+            <b>Industry segment</b>: {data.industry_segment}
+          </Typography>
+          <Typography variant="body2" color="textSecondary" component="p">
+                <b>Jensen Huang</b>: Founder and CEO, NVIDIA
+             </Typography>
         </CardContent>
       </CardActionArea>
       
@@ -46,14 +49,23 @@ export default function MediaCard() {
 
 const useStyles = makeStyles((theme) => ({
     root: {
-      maxWidth: 645,
+      maxWidth: '100%',
+      marginBottom: theme.spacing(3)
     },
-    media: {
-      height: 140,
-    },
+   
     gap: {
         display: "flex",
         flexDirection: "column",
         gap: theme.spacing(2)
+    },
+    title: {
+        color: "rgb(118, 185, 0)"
+    },
+    mark: {
+        color: "#B3D871"
+    },
+    navLink: {
+        textDecoration: 'none'
     }
+ 
   }));

@@ -1,0 +1,1 @@
+export const url = 'https://app-sessions-nvidia.herokuapp.com/sessions';
