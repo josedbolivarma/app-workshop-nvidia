@@ -1,4 +1,4 @@
-import { GET_CARDS, GET_PROFILE } from "../types";
+import { GET_CARDS, GET_CATEGORY, GET_PROFILE } from "../types";
 
 export default (state, action) => {
     const {payload, type} = action;
@@ -9,6 +9,11 @@ export default (state, action) => {
                 ...state,
                 cards: payload
             }
+            case GET_CATEGORY:
+                return {
+                    ...state,
+                    category: payload
+                }
         case GET_PROFILE:
             return {
                 ...state,

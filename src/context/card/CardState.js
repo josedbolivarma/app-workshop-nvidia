@@ -6,6 +6,7 @@ import CardContext from "./CardContext";
 const CardState = (props) => {
     const initialState = {
         cards: [],
+        category: [],
         selectedCard: null
     };
     
@@ -32,12 +33,27 @@ const CardState = (props) => {
         })
     }
 
+    const getCategory = async (category = "creative") => {
+        const res = await axios.get('https://app-sessions-nvidia.herokuapp.com/sessions/');
+        const data = res.data;
+        console.log(data);
+        console.log("target name");
+        const elemento = data.filter(el => el.industry_segment.toLocaleLowerCase().includes(category.toLocaleLowerCase()));
+        console.log(elemento);
+        dispatch({
+            type: 'GET_CATEGORY',
+            payload: data
+        })
+       }
+
     return (
         <CardContext.Provider value={{
             cards: state.cards,
             selectedCard: state.selectedCard,
+            category: state.category,
             getCards,
-            getProfile
+            getProfile,
+            getCategory
         }}>
             { props.children }
         </CardContext.Provider>

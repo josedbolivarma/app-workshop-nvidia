@@ -9,12 +9,13 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 //import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
-const AccordionSimple = () => {
+const AccordionSimple = ({category}) => {
   const classes = useStyles();
-
+  console.log(category);
   return (
     <div className={classes.root}>
       <Accordion>
+       
         <AccordionSummary
           className={classes.transparent}
           aria-controls="panel1a-content"
@@ -26,13 +27,18 @@ const AccordionSimple = () => {
         </AccordionSummary>
         <AccordionDetails className={classes.transparent}>
           <Typography>
-          <FormControlLabel
+            {
+              category.map(el => (
+          <FormControlLabel className={classes.formLabel} key={el.id}
             aria-label="Acknowledge"
             onClick={(event) => event.stopPropagation()}
             onFocus={(event) => event.stopPropagation()}
             control={<Checkbox />}
-            label="I acknowledge that I should stop the click event propagation"
+            label={el.industry_segment}
           />
+              ))
+            }
+          
           </Typography>
         </AccordionDetails>
       </Accordion>
@@ -43,19 +49,23 @@ const AccordionSimple = () => {
           id="panel1a-header"
         >
           
-          <Typography className={classes.heading}>Primary Topic</Typography>
+          <Typography className={classes.heading}>Audience Level</Typography>
          
         </AccordionSummary>
         <AccordionDetails
         className={classes.transparent}>
           <Typography>
-          <FormControlLabel
+          {
+              category.map(el => (
+          <FormControlLabel className={classes.formLabel} key={el.id}
             aria-label="Acknowledge"
             onClick={(event) => event.stopPropagation()}
             onFocus={(event) => event.stopPropagation()}
             control={<Checkbox />}
-            label="I acknowledge that I should stop the click event propagation"
+            label={el.audience_level}
           />
+              ))
+            }
           </Typography>
         </AccordionDetails>
       </Accordion>
@@ -66,19 +76,23 @@ const AccordionSimple = () => {
           id="panel1a-header"
         >
           
-          <Typography className={classes.heading}>Other Collections</Typography>
+          <Typography className={classes.heading}>Audience Type</Typography>
          
         </AccordionSummary>
         <AccordionDetails
         className={classes.transparent}>
           <Typography>
-          <FormControlLabel
+          {
+              category.map(el => (
+          <FormControlLabel className={classes.formLabel} key={el.id}
             aria-label="Acknowledge"
             onClick={(event) => event.stopPropagation()}
             onFocus={(event) => event.stopPropagation()}
             control={<Checkbox />}
-            label="I acknowledge that I should stop the click event propagation"
+            label={el.audience_type}
           />
+              ))
+            }
           </Typography>
         </AccordionDetails>
       </Accordion>
@@ -95,13 +109,17 @@ const AccordionSimple = () => {
         <AccordionDetails
         className={classes.transparent}>
           <Typography>
-          <FormControlLabel
+          {
+              category.map(el => (
+          <FormControlLabel className={classes.formLabel} key={el.id}
             aria-label="Acknowledge"
             onClick={(event) => event.stopPropagation()}
             onFocus={(event) => event.stopPropagation()}
             control={<Checkbox />}
-            label="I acknowledge that I should stop the click event propagation"
+            label={el.session_type}
           />
+              ))
+            }
           </Typography>
         </AccordionDetails>
       </Accordion>
@@ -112,19 +130,23 @@ const AccordionSimple = () => {
           id="panel1a-header"
         >
           
-          <Typography className={classes.heading}>Other colletions</Typography>
+          <Typography className={classes.heading}>Language</Typography>
          
         </AccordionSummary>
         <AccordionDetails
         className={classes.transparent}>
           <Typography>
-          <FormControlLabel
+          {
+              category.map(el => (
+          <FormControlLabel className={classes.formLabel} key={el.id}
             aria-label="Acknowledge"
             onClick={(event) => event.stopPropagation()}
             onFocus={(event) => event.stopPropagation()}
             control={<Checkbox />}
-            label="I acknowledge that I should stop the click event propagation"
+            label={el.lenguage}
           />
+              ))
+            }
           </Typography>
         </AccordionDetails>
       </Accordion>
@@ -150,6 +172,9 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: '#ddd',
       border: 'none',
       boxShadow: 'none'
+    },
+    formLabel: {
+      width: '100%'
     }
  
 }));

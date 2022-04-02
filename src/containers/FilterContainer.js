@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import AccordionSimple from '../components/AccordionSimple'
 import { InputSearch } from '../styled/styledcomponents'
 import Typography from '@material-ui/core/Typography';
@@ -8,12 +8,21 @@ import CardContext from '../context/card/CardContext';
 const FilterContainer = () => {
     
     const classes = useStyles();
-    const { getProfile } = useContext(CardContext);
-
+    const { getProfile, getCategory, category } = useContext(CardContext);
+    
+    console.log(category);
     const handleSearch = (e) => {
         console.log(e.target.value);
         getProfile(e.target.value);
     }
+    useEffect(() => {
+        getCategory()
+     
+      return () => {
+        
+      }
+    }, [])
+    
 
   return (
     <div className={classes.root}>
@@ -28,7 +37,9 @@ const FilterContainer = () => {
         placeholder='Search'
         onChange={handleSearch}
         />
-        <AccordionSimple />
+        
+                <AccordionSimple category={category}/>
+       
     </div>
   )
 }
