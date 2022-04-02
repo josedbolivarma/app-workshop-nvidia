@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Accordion from '@material-ui/core/Accordion';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
@@ -6,12 +6,21 @@ import AccordionDetails from '@material-ui/core/AccordionDetails';
 import Typography from '@material-ui/core/Typography';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import CardContext from '../context/card/CardContext';
 
 //import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 const AccordionSimple = ({category}) => {
   const classes = useStyles();
+  const { getProfile } = useContext(CardContext);
+
   console.log(category);
+  const onFilterCategory = (e) => {
+    e.stopPropagation();
+    console.log(e.target.name);
+    getProfile(e.target.value,e.target.name);
+  }
+
   return (
     <div className={classes.root}>
       <Accordion>
@@ -31,10 +40,12 @@ const AccordionSimple = ({category}) => {
               category.map(el => (
           <FormControlLabel className={classes.formLabel} key={el.id}
             aria-label="Acknowledge"
-            onClick={(event) => event.stopPropagation()}
+            onChange={onFilterCategory}
             onFocus={(event) => event.stopPropagation()}
             control={<Checkbox />}
             label={el.industry_segment}
+            name='industry_segment'
+            value={el.industry_segment}
           />
               ))
             }
@@ -59,10 +70,12 @@ const AccordionSimple = ({category}) => {
               category.map(el => (
           <FormControlLabel className={classes.formLabel} key={el.id}
             aria-label="Acknowledge"
-            onClick={(event) => event.stopPropagation()}
             onFocus={(event) => event.stopPropagation()}
+            onChange={onFilterCategory}
             control={<Checkbox />}
+            name='audience_level'
             label={el.audience_level}
+            value={el.audience_level}
           />
               ))
             }
@@ -86,10 +99,12 @@ const AccordionSimple = ({category}) => {
               category.map(el => (
           <FormControlLabel className={classes.formLabel} key={el.id}
             aria-label="Acknowledge"
-            onClick={(event) => event.stopPropagation()}
             onFocus={(event) => event.stopPropagation()}
+            onChange={onFilterCategory}
+            name='audience_type'
             control={<Checkbox />}
             label={el.audience_type}
+            value={el.audience_type}
           />
               ))
             }
@@ -113,10 +128,12 @@ const AccordionSimple = ({category}) => {
               category.map(el => (
           <FormControlLabel className={classes.formLabel} key={el.id}
             aria-label="Acknowledge"
-            onClick={(event) => event.stopPropagation()}
             onFocus={(event) => event.stopPropagation()}
+            onChange={onFilterCategory}
+            name='session_type'
             control={<Checkbox />}
             label={el.session_type}
+            value={el.session_type}
           />
               ))
             }
@@ -140,10 +157,12 @@ const AccordionSimple = ({category}) => {
               category.map(el => (
           <FormControlLabel className={classes.formLabel} key={el.id}
             aria-label="Acknowledge"
-            onClick={(event) => event.stopPropagation()}
             onFocus={(event) => event.stopPropagation()}
+            onChange={onFilterCategory}
+            name='lenguage'
             control={<Checkbox />}
             label={el.lenguage}
+            value={el.lenguage}
           />
               ))
             }

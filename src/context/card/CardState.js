@@ -20,12 +20,33 @@ const CardState = (props) => {
      })
     }
     
-    const getProfile = async (id) => {
+    const getProfile = async (id, type = 'title') => {
         const res = await axios.get('https://app-sessions-nvidia.herokuapp.com/sessions/');
         const data = res.data;
         console.log(data);
         console.log("target name", id);
-        const elemento = data.filter(el => el.title.toLocaleLowerCase().includes(id.toLocaleLowerCase()));
+        let elemento;
+        if(type === 'title') {
+            elemento = data.filter(el => el.title.toLocaleLowerCase().includes(id.toLocaleLowerCase()));
+        }
+        if(type === 'industry_segment') {
+             elemento = data.filter(el => el.industry_segment.toLocaleLowerCase().includes(id.toLocaleLowerCase()));
+        }
+
+        if(type === 'audience_level') {
+             elemento = data.filter(el => el.audience_level.toLocaleLowerCase().includes(id.toLocaleLowerCase()));
+        }
+
+        if(type === 'audience_type') {
+            elemento = data.filter(el => el.audience_type.toLocaleLowerCase().includes(id.toLocaleLowerCase()));
+       }
+       if(type === 'session_type') {
+        elemento = data.filter(el => el.session_type.toLocaleLowerCase().includes(id.toLocaleLowerCase()));
+     }
+        if(type === 'lenguage') {
+        elemento = data.filter(el => el.lenguage.toLocaleLowerCase().includes(id.toLocaleLowerCase()));
+    }
+       
         console.log(elemento);
         dispatch({
             type: 'GET_CARDS',
