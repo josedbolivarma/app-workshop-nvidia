@@ -20,10 +20,15 @@ const CardState = (props) => {
     }
     
     const getProfile = async (id) => {
-        const res = await axios.get('https://app-sessions-nvidia.herokuapp.com/sessions/' + id);
+        const res = await axios.get('https://app-sessions-nvidia.herokuapp.com/sessions/');
+        const data = res.data;
+        console.log(data);
+        console.log("target name", id);
+        const elemento = data.filter(el => el.title.toLocaleLowerCase().includes(id.toLocaleLowerCase()));
+        console.log(elemento);
         dispatch({
-            type: 'GET_PROFILE',
-            payload: res.data
+            type: 'GET_CARDS',
+            payload: elemento
         })
     }
 

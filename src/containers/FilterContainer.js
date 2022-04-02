@@ -1,15 +1,18 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import AccordionSimple from '../components/AccordionSimple'
 import { InputSearch } from '../styled/styledcomponents'
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/styles';
+import CardContext from '../context/card/CardContext';
 
 const FilterContainer = () => {
     
     const classes = useStyles();
+    const { getProfile } = useContext(CardContext);
 
     const handleSearch = (e) => {
         console.log(e.target.value);
+        getProfile(e.target.value);
     }
 
   return (
