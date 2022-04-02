@@ -1,29 +1,38 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
+
 
 
 
 export default function MediaCard(el) {
   const classes = useStyles();
-   const data = el.data;
+  const data = el.data;
+  const navigate = useNavigate();
+
+  const setProfile = (id) => {
+    console.log('My id is', id);
+    localStorage.setItem('product', JSON.stringify(data));
+    navigate(`/product/${id}`);
+  }
+
   return (
-    <Card className={classes.root}>
+    <Card className={classes.root}
+    >
       <CardActionArea>
         
         <CardContent className={classes.gap}>
-        <Link className={classes.navLink} to={`/product/${data.id}`}>
-        <Typography gutterBottom variant="h5" component="h2" className={classes.title}>
+        <Typography variant='h4' component="h2" className={classes.navLink} onClick={() => {setProfile(data.id)}}>
+        <Typography gutterBottom variant="h5" component="p" className={classes.title}>
             {data.title}
           </Typography>
-        </Link>
+        </Typography>
           
           <Typography gutterBottom variant="h6" component="h2" className={classes.title}>
             {data.description}
@@ -50,7 +59,8 @@ export default function MediaCard(el) {
 const useStyles = makeStyles((theme) => ({
     root: {
       maxWidth: '100%',
-      marginBottom: theme.spacing(3)
+      marginBottom: theme.spacing(2),
+      marginTop: theme.spacing(2)
     },
    
     gap: {

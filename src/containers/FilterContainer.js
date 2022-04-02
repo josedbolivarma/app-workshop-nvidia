@@ -1,11 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import AccordionSimple from '../components/AccordionSimple'
 import { InputSearch } from '../styled/styledcomponents'
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/styles';
 
 const FilterContainer = () => {
+    
     const classes = useStyles();
+
+    const handleSearch = (e) => {
+        console.log(e.target.value);
+    }
+
   return (
     <div className={classes.root}>
         <div className={classes.boxLabel}>
@@ -17,6 +23,7 @@ const FilterContainer = () => {
         <InputSearch
         type='search'
         placeholder='Search'
+        onChange={handleSearch}
         />
         <AccordionSimple />
     </div>
